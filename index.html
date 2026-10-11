@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#090b10" />
+  <meta name="description" content="GTBRAINS is a full-cycle digital video production studio creating short-form stories, comedy, digital series, music videos and AI-powered visual projects." />
+  <title>GTBRAINS — Digital Video Production</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23090b10'/%3E%3Cpath d='M20 24h60v14H56v38H42V38H20z' fill='%23f4ff61'/%3E%3C/svg%3E">
+  <style>
+    :root{
+      --bg:#090b10;
+      --bg-soft:#0f121a;
+      --panel:#121722;
+      --text:#f4f7fb;
+      --muted:#9ca6b5;
+      --line:rgba(255,255,255,.1);
+      --acid:#f4ff61;
+      --violet:#8f7cff;
+      --cyan:#58e6ff;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(143,124,255,.12), transparent 33%),
+        radial-gradient(circle at 82% 0%, rgba(88,230,255,.09), transparent 28%),
+        var(--bg);
+      color:var(--text);
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    .noise{
+      pointer-events:none;position:fixed;inset:0;z-index:20;opacity:.035;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+    }
+    .wrap{width:min(calc(100% - 40px),var(--max));margin:0 auto}
+    .nav{
+      position:sticky;top:0;z-index:15;
+      backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+      border-bottom:1px solid var(--line);
+      background:rgba(9,11,16,.72)
+    }
+    .nav-inner{height:74px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{font:700 1.05rem/1 Space Grotesk,sans-serif;letter-spacing:.12em}
+    .brand span{color:var(--acid)}
+    .nav-links{display:flex;gap:28px;color:#c7ced8;font-size:.92rem}
+    .nav-links a{transition:.25s}
+    .nav-links a:hover{color:white}
+    .nav-cta{border:1px solid var(--line);padding:10px 16px;border-radius:999px;font-weight:600;font-size:.9rem;transition:.25s}
+    .nav-cta:hover{background:var(--acid);color:#0a0c10;border-color:var(--acid)}
+    .hero{min-height:calc(100vh - 74px);display:grid;align-items:center;position:relative;padding:72px 0 70px}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:52px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;text-transform:uppercase;letter-spacing:.15em;font-size:.76rem;color:#c6ced9;margin-bottom:22px}
+    .eyebrow:before{content:"";width:28px;height:1px;background:var(--acid);box-shadow:0 0 18px var(--acid)}
+    h1,h2,h3{font-family:Space Grotesk,sans-serif;margin:0;line-height:1.02}
+    h1{font-size:clamp(4rem,9vw,8.8rem);letter-spacing:-.065em;max-width:950px}
+    h1 .accent{color:var(--acid)}
+    .hero-copy{font-size:clamp(1.12rem,2vw,1.38rem);max-width:720px;color:#c8d0db;margin:28px 0 34px}
+    .hero-copy strong{color:white}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+    .button{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:999px;font-weight:700;transition:.25s;border:1px solid transparent}
+    .button.primary{background:var(--acid);color:#0b0d12;box-shadow:0 0 42px rgba(244,255,97,.12)}
+    .button.primary:hover{transform:translateY(-2px);box-shadow:0 14px 42px rgba(244,255,97,.2)}
+    .button.secondary{border-color:var(--line);color:#d9dee6}
+    .button.secondary:hover{border-color:#6f7886;color:white}
+    .hero-card{position:relative;aspect-ratio:4/5;border-radius:30px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:
+      linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.005)),
+      linear-gradient(160deg,#121727,#090b10)}
+    .orb{position:absolute;border-radius:50%;filter:blur(2px);mix-blend-mode:screen}
+    .orb.one{width:230px;height:230px;background:radial-gradient(circle at 35% 30%,#ffffff 0,#b7aaff 8%,#7259ff 30%,rgba(114,89,255,.05) 70%);top:9%;left:8%;animation:float 8s ease-in-out infinite}
+    .orb.two{width:190px;height:190px;background:radial-gradient(circle at 30% 35%,#fff 0,#bff7ff 7%,#26d7ff 30%,rgba(38,215,255,.04) 70%);bottom:8%;right:4%;animation:float 9s ease-in-out infinite reverse}
+    .hero-card .gridlines{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:34px 34px;mask-image:linear-gradient(to bottom,black,transparent)}
+    .hero-card .label{position:absolute;left:26px;bottom:26px;right:26px;display:flex;justify-content:space-between;gap:16px;align-items:end;color:#cbd2dc;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase}
+    .hero-card .label b{color:white;font:600 1.3rem/1 Space Grotesk,sans-serif;letter-spacing:-.02em;text-transform:none}
+    @keyframes float{50%{transform:translate3d(14px,-16px,0) scale(1.04)}}
+    .ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;background:rgba(255,255,255,.015)}
+    .ticker-track{display:flex;gap:48px;white-space:nowrap;padding:15px 0;width:max-content;animation:marquee 28s linear infinite;color:#b9c1cc;font-size:.78rem;text-transform:uppercase;letter-spacing:.13em}
+    .ticker-track span:after{content:"✦";margin-left:48px;color:var(--acid)}
+    @keyframes marquee{to{transform:translateX(-50%)}}
+    section{padding:108px 0;border-bottom:1px solid var(--line)}
+    .section-head{display:grid;grid-template-columns:.6fr 1.4fr;gap:44px;align-items:start;margin-bottom:54px}
+    .kicker{color:var(--acid);text-transform:uppercase;letter-spacing:.14em;font-size:.76rem;font-weight:600}
+    .section-head h2{font-size:clamp(2.6rem,5vw,5.4rem);letter-spacing:-.045em;max-width:900px}
+    .section-intro{max-width:780px;color:#b9c2cf;font-size:1.08rem;margin-top:22px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{min-height:260px;padding:28px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.01));transition:.25s;position:relative;overflow:hidden}
+    .card:after{content:"";position:absolute;inset:auto -50px -70px auto;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,var(--glow,rgba(143,124,255,.35)),transparent 70%);opacity:.55;transition:.3s}
+    .card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.22)}
+    .card:hover:after{transform:scale(1.15)}
+    .card .num{font:500 .8rem/1 Space Grotesk,sans-serif;color:#727d8c;letter-spacing:.12em;margin-bottom:46px}
+    .card h3{font-size:1.45rem;letter-spacing:-.02em;margin-bottom:12px}
+    .card p{margin:0;color:#9fa9b8;font-size:.96rem}
+    .process{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--line);border-radius:22px;overflow:hidden}
+    .step{padding:28px 22px;min-height:250px;border-right:1px solid var(--line);background:rgba(255,255,255,.018)}
+    .step:last-child{border-right:0}
+    .step small{display:block;color:var(--acid);font:600 .74rem/1 Space Grotesk,sans-serif;letter-spacing:.12em;margin-bottom:64px}
+    .step h3{font-size:1.28rem;margin-bottom:12px}
+    .step p{color:#9fa9b8;margin:0;font-size:.92rem}
+    .manifesto{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+    .manifesto h2{font-size:clamp(3.2rem,6vw,6.5rem);letter-spacing:-.055em}
+    .manifesto-copy{font-size:1.07rem;color:#bac3cf}
+    .manifesto-copy p:first-child{margin-top:0}
+    .quote{margin-top:30px;padding:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font:600 1.45rem/1.25 Space Grotesk,sans-serif;color:white}
+    .batch{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .batch-panel{border:1px solid var(--line);border-radius:26px;padding:34px;background:var(--bg-soft)}
+    .batch-panel.big{background:linear-gradient(150deg,rgba(244,255,97,.12),rgba(143,124,255,.06) 55%,rgba(88,230,255,.04));min-height:360px;display:flex;flex-direction:column;justify-content:space-between}
+    .batch-panel.big h2{font-size:clamp(2.8rem,5vw,5.6rem);letter-spacing:-.05em}
+    .batch-panel p{color:#b7c0cd;max-width:590px}
+    .pill-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
+    .pill{border:1px solid var(--line);border-radius:999px;padding:8px 12px;color:#c9d0da;font-size:.82rem}
+    .contact{padding:118px 0 80px;text-align:center;border-bottom:0}
+    .contact h2{font-size:clamp(3.5rem,8vw,8rem);letter-spacing:-.06em;max-width:1050px;margin:0 auto 26px}
+    .contact p{color:#aeb8c5;max-width:650px;margin:0 auto 32px;font-size:1.08rem}
+    .email{display:inline-block;font:600 clamp(1.2rem,3vw,2.2rem)/1 Space Grotesk,sans-serif;border-bottom:1px solid var(--acid);padding-bottom:7px}
+    footer{padding:24px 0 36px;color:#7f8998;font-size:.82rem}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:none}
+    @media(max-width:980px){
+      .hero-grid,.manifesto,.batch{grid-template-columns:1fr}
+      .hero-card{max-width:620px;width:100%;aspect-ratio:16/10}
+      .cards{grid-template-columns:repeat(2,1fr)}
+      .process{grid-template-columns:1fr 1fr}
+      .step{border-bottom:1px solid var(--line)}
+      .step:nth-child(2n){border-right:0}
+      .step:last-child{border-bottom:0}
+      .section-head{grid-template-columns:1fr;gap:14px}
+    }
+    @media(max-width:700px){
+      .wrap{width:min(calc(100% - 28px),var(--max))}
+      .nav-links{display:none}
+      .nav-inner{height:66px}
+      .hero{padding-top:42px;min-height:auto}
+      h1{font-size:clamp(3.4rem,18vw,6rem)}
+      .hero-copy{font-size:1.05rem}
+      section{padding:80px 0}
+      .cards{grid-template-columns:1fr}
+      .process{grid-template-columns:1fr}
+      .step,.step:nth-child(2n){border-right:0;border-bottom:1px solid var(--line)}
+      .step:last-child{border-bottom:0}
+      .step small{margin-bottom:34px}
+      .footer-inner{flex-direction:column;align-items:flex-start}
+    }
+    @media(prefers-reduced-motion:reduce){
+      *{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+      .reveal{opacity:1;transform:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">GT<span>BRAINS</span></a>
+      <div class="nav-links" aria-label="Primary navigation">
+        <a href="#studio">Studio</a>
+        <a href="#work">What we create</a>
+        <a href="#process">Process</a>
+      </div>
+      <a class="nav-cta" href="mailto:hello@gtbrains.com">Start a project</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Full-cycle digital video production</div>
+          <h1>We imagine.<br>We create.<br><span class="accent">We impress.</span></h1>
+          <p class="hero-copy">We turn ideas into stories, characters into heroes, and individual scenes into videos people want to watch to the end. <strong>From the first idea to the finished video file — everything happens in one studio.</strong></p>
+          <div class="hero-actions">
+            <a class="button primary" href="mailto:hello@gtbrains.com">Discuss a project <span aria-hidden="true">↗</span></a>
+            <a class="button secondary" href="#work">See what we create</a>
+          </div>
+        </div>
+        <div class="hero-card" aria-hidden="true">
+          <div class="gridlines"></div>
+          <div class="orb one"></div>
+          <div class="orb two"></div>
+          <div class="label"><span><b>Ideas with character.</b><br>Stories that continue.</span><span>GT / 26</span></div>
+        </div>
+      </div>
+    </header>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>Comedy shorts</span><span>Digital series</span><span>AI characters</span><span>Music videos</span><span>Animation</span><span>Explainer video</span>
+        <span>Comedy shorts</span><span>Digital series</span><span>AI characters</span><span>Music videos</span><span>Animation</span><span>Explainer video</span>
+      </div>
+    </div>
+
+    <section id="studio">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="kicker">The studio</div>
+          <div>
+            <h2>Every big idea starts with BRAINS.</h2>
+            <p class="section-intro">A good video needs character. The right situation, a memorable protagonist, an unexpected turn, a perfectly timed pause — the details that make a story work.</p>
+          </div>
+        </div>
+        <div class="manifesto reveal">
+          <h2>Creative thinking meets production craft.</h2>
+          <div class="manifesto-copy">
+            <p>At GTBRAINS, we bring creative development and technical production together. We develop concepts, write scripts, build visual worlds, and shape every project into a finished piece with its own rhythm, atmosphere, and personality.</p>
+            <p>You can come to us with a detailed concept, a simple thought, or simply the need for a steady flow of new videos. We take care of the ideas and the entire production process.</p>
+            <div class="quote">Technology expands the possibilities. We create the story.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="kicker">What we create</div>
+          <div><h2>Stories built to move.</h2></div>
+        </div>
+        <div class="cards">
+          <article class="card reveal" style="--glow:rgba(244,255,97,.3)"><div class="num">01</div><h3>Short Videos with Character</h3><p>Everyday stories, comedy scenes, sketches, visual jokes, and unexpected situations. Compact narratives where every shot moves the story forward.</p></article>
+          <article class="card reveal" style="--glow:rgba(143,124,255,.35)"><div class="num">02</div><h3>Digital Series & Recurring Formats</h3><p>Characters people want to come back to. We develop the concept, personalities, visual style, and new episodes while keeping the project recognizable.</p></article>
+          <article class="card reveal" style="--glow:rgba(88,230,255,.35)"><div class="num">03</div><h3>AI Characters & Fictional Worlds</h3><p>Digital characters, environments, and scenes — appearance, movement, expression, lighting, and atmosphere shaped in service of the creative idea.</p></article>
+          <article class="card reveal" style="--glow:rgba(255,113,176,.28)"><div class="num">04</div><h3>Music Videos</h3><p>Music videos, visual stories, and short-form musical pieces built around the rhythm, mood, and dramatic structure of the track.</p></article>
+          <article class="card reveal" style="--glow:rgba(255,184,84,.28)"><div class="num">05</div><h3>Animation & Mixed Techniques</h3><p>Generated video, animation, graphics, and source material combined into one visual language, with the production method chosen for the idea.</p></article>
+          <article class="card reveal" style="--glow:rgba(137,255,193,.28)"><div class="num">06</div><h3>Presentation & Explainer Videos</h3><p>Stories about products, projects, and ideas. We turn complex subjects into clear visual narratives with strong structure and expressive delivery.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="kicker">Full-cycle production</div>
+          <div><h2>From thought to finished file.</h2></div>
+        </div>
+        <div class="process reveal">
+          <div class="step"><small>01 / IDEA</small><h3>Idea & Concept</h3><p>We find the theme, tone, and format — what the audience should see, feel, and remember.</p></div>
+          <div class="step"><small>02 / STORY</small><h3>Script & Direction</h3><p>Story, dialogue, character actions, scene order, shot composition, and narrative pace.</p></div>
+          <div class="step"><small>03 / BUILD</small><h3>Visual Production</h3><p>Characters, locations, and scenes created with AI tools, animation, graphics, and hybrid methods.</p></div>
+          <div class="step"><small>04 / SHAPE</small><h3>Editing & Sound</h3><p>Rhythm, colour, voice, music, effects, titles, subtitles, and graphic elements.</p></div>
+          <div class="step"><small>05 / DELIVER</small><h3>Final Delivery</h3><p>Finished files in vertical, horizontal, or square formats, prepared for the required use case.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap batch">
+        <div class="batch-panel big reveal">
+          <div class="kicker">Flexible production</div>
+          <h2>One video.<br>A series.<br>New stories every month.</h2>
+        </div>
+        <div class="batch-panel reveal">
+          <p>We produce both individual videos and recurring batches of content.</p>
+          <p>For ongoing collaborations, we independently develop new ideas and scripts, produce the videos, and deliver the finished selection through cloud storage. You review the result, and together we confirm the final batch and its price.</p>
+          <p>Production volume, formats, and schedule are tailored to each project. We manage the creative process inside the studio — you do not need to supervise every stage.</p>
+          <div class="pill-row"><span class="pill">Short-form</span><span class="pill">Recurring batches</span><span class="pill">Cloud delivery</span><span class="pill">Multi-format</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap manifesto reveal">
+        <h2>AI is a tool.<br>The story is the work.</h2>
+        <div class="manifesto-copy">
+          <p>AI gives us more creative freedom: changing eras and locations, creating unusual characters, and blending the real with the imagined.</p>
+          <p>We use these possibilities deliberately. We select the strongest ideas, refine the scenes, and shape them into a coherent finished video. Behind every project are storytelling, creative judgement, and attention to detail.</p>
+          <div class="quote">GTBRAINS — ideas with character. Stories that continue.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap reveal">
+        <div class="kicker">Start something</div>
+        <h2>Let’s make something worth watching.</h2>
+        <p>Tell us what you have in mind — or simply tell us you need new videos. We can take it from there.</p>
+        <a class="email" href="mailto:hello@gtbrains.com">hello@gtbrains.com ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner"><span>© 2026 GTBRAINS. Digital Video Production.</span><span>Republic of Serbia</span></div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach((entry)=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}})
+    },{threshold:.12});
+    document.querySelectorAll('.reveal').forEach((el)=>observer.observe(el));
+  </script>
+</body>
+</html>
